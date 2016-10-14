@@ -1,0 +1,46 @@
+<html>
+
+<meta charset="UTF-8"/> 
+
+<head>
+<!-- List of pages to cycle through. -->
+<script src="script/pages.js"></script>
+
+<!-- Global configuration variables (e.g. page reload interval). -->
+<script src="script/globals.js"/></script>
+</head>
+
+<body onload="reloadContent()">
+
+   <script>
+        
+        //Index for iterating through configured pages.
+        var index = 0; 
+
+        //Variable to store reload timer
+        var carousel = setInterval(reloadContent, reloadInterval);
+
+        //Function reloadContent
+        //
+        //Reloads the IFrame with ID "content" to the next indexed page.
+        function reloadContent() {
+            document.getElementById("content").src=pages[getNextIndex()];
+        }
+
+        //Function getNextIndex
+        //
+        //Maintains the state of the 
+        function getNextIndex() {
+            if(index == pages.length)
+                index = 0;
+            
+            return index++;
+        }
+
+    </script>
+
+    <!-- Actual content. -->
+    <iframe id="content" height="100%" width="100%" style="border:none;"/>
+</body>
+
+<html>
